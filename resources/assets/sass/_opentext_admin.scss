@@ -1,0 +1,41 @@
+/******************************************************************************/
+
+.table-admin-sns th
+{
+  white-space:nowrap;
+}
+
+.list-inline .btn
+{
+  margin-bottom:10px;
+}
+
+/** COLOURS *******************************************************************/
+
+.text-primary
+{
+  color:$brand-primary;
+}
+
+.text-info
+{
+  color:$brand-info;
+}
+
+.text-success,
+.panel-success
+{
+  color:$brand-success;
+}
+
+.text-warning
+{
+  color:$brand-warning;
+}
+
+.text-danger
+{
+  color:$brand-danger;
+}
+
+/******************************************************************************/

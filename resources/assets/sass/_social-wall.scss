@@ -1,0 +1,44 @@
+body.social-wall
+{
+
+  background-image:url("/images/backgrounds/inkblot.png");
+  background-attachment:fixed;
+  background-size:cover;
+  background-repeat:no-repeat;
+  overflow:hidden;
+
+  .social-wall-header 
+  {
+
+    font-size:3.5vw;
+    white-space:nowrap;
+    vertical-align:middle;
+    margin:1vh 0vw 0vh 0vw;
+
+    img.social-wall-header-logo
+    {
+      height:7vw;
+    }
+
+  }
+
+  #app
+  {
+
+    width:100vw;
+    height:95vh;
+
+    .VueCarousel-slide
+    {
+      width:100%;
+      height:100%;
+    }
+
+  }
+
+}
+
+.rounded-circle 
+{
+  border-radius: 50%;
+}
