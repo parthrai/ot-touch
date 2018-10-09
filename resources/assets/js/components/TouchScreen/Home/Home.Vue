@@ -12,7 +12,7 @@
 
             <div class="row">
 
-                <table>
+                <table id="tbl">
                     <tr>
                         <td class="tile"> <a href="#/Agenda"> <nav-tiles :img="'agenda.png'" :caption="'Agenda'"></nav-tiles></a></td>
                         <td class="tile"> <a href="#/Map"><nav-tiles :img="'map.png'" :caption="'Map'"></nav-tiles></a></td>
@@ -38,7 +38,45 @@
 
 <script>
     export default{
-        props:['classs']
+        props:['classs'],
+
+        methods:{
+
+            tileColor(j){
+
+
+
+                setTimeout(function() {
+                    var els = document.getElementById("tbl").getElementsByTagName("td");
+                    els[j].style.background = "rgba(149, 143, 255, 0."+j+"9)"
+
+
+                    console.log(j);
+                }, 1000 * j);
+
+                setTimeout(function() {
+                    var els = document.getElementById("tbl").getElementsByTagName("td");
+
+                    els[j].style.background = "rgba(149, 143, 255, 0.15)"
+
+                    console.log(j);
+                }, 1000 * j);
+
+            }
+
+        },
+
+        mounted(){
+
+
+            for(let i=0; i <=10 ; i++){
+
+                for(let i =0 ; i < 6 ; i++) {
+                    this.tileColor(i);
+                }
+            }
+
+        }
     }
 </script>
 <style>
@@ -50,6 +88,18 @@
 
     .drawer{
         background-color: white;
+    }
+
+    .tile-bg1{
+         background-color: rgba(149, 143, 255, 0.15);
+    }
+
+    .tile-bg2{
+        background-color: rgba(149, 143, 255, 0.25);
+    }
+
+    .tile-bg3{
+        background-color: rgba(149, 143, 255, 0.35);
     }
 
     a{

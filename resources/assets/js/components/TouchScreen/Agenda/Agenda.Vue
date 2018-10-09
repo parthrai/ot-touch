@@ -4,9 +4,9 @@
     <v-container grid-list-md>
 
 
-        <v-layout row wrap>
+        <v-layout row wrap >
 
-            <v-flex>
+            <v-flex >
                 <v-card>
                     <v-tabs
                             v-model="active"
@@ -22,8 +22,8 @@
                                 </v-tab>
 
 
-                                <v-tab-item v-if="schedule.type=='schedule'">
-                                    <v-card flat>
+                                <v-tab-item v-if="schedule.type=='schedule'" class="transparent">
+                                    <v-card flat class="yoyo">
                                         <h1 class="main_text">{{schedule.schedule.title}}</h1>
                                         <h3 class="main_text">{{schedule.date}}</h3>
 
@@ -35,6 +35,37 @@
                                                 <td>{{event.location}}</td>
 
                                             </tr>
+
+
+                                            <h2>{{schedule.breakout.title}}</h2>
+
+                                                <tr v-for="(breakout,index) in schedule.breakout.session_blocks" v-show="schedule.breakout.session_blocks">
+
+                                                        <h2>{{breakout.time_range}}</h2>
+                                                        <br>
+
+                                                            <v-card v-for="(events,index) in breakout.events">
+
+                                                                <td>{{events.title}}</td>
+                                                                <td>{{events.location}}</td>
+
+
+
+                                                            </v-card>
+
+
+
+                                                    <v-card>
+
+                                                    </v-card>
+
+
+
+
+                                                </tr>
+
+
+
 
                                             </tbody>
                                         </table>
@@ -120,9 +151,12 @@
 
     }
 
+
+
     .main-content{
         top:8vh;
         position:relative;
+        background: transparent;
     }
 
     .fixed_header{
@@ -181,6 +215,7 @@
                 schedules:[],
                 sheet: false,
 
+
                 tiles: [
                     {img: 'keep.png', title: 'Keep'},
                     {img: 'inbox.png', title: 'Inbox'},
@@ -191,14 +226,7 @@
             }
         },
 
-        computed:{
-            cssprops(){
-                return {
-                    'bg-color':'green'
-                }
-            }
 
-        },
         beforeMount(){
             this.getSchedule();
         },

@@ -9,7 +9,7 @@
             </div>
         </header>
 
-        <transition name="router-anim" enter-active-class="animated fadeInDown" leave-active-class="animated fadeOutDown">
+        <transition name="router-anim" enter-active-class="animated fadeInDown" leave-active-class="animated fadeOutDown" class="main">
             <router-view></router-view>
         </transition>
 
@@ -102,6 +102,10 @@
 <style>
 
     @import "https://cdn.jsdelivr.net/npm/animate.css@3.5.1";
+
+    .main{
+        background: transparent;
+    }
 
     #wrapper{
         background-image: url("http://otew.io/socialwall/img/ew-2018-background.png");
