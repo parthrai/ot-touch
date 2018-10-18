@@ -4270,6 +4270,40 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4289,15 +4323,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             tiles: [{ img: 'keep.png', title: 'Keep' }, { img: 'inbox.png', title: 'Inbox' }, { img: 'hangouts.png', title: 'Hangouts' }, { img: 'messenger.png', title: 'Messenger' }, { img: 'google.png', title: 'Google+' }]
         };
-    },
-
-
-    computed: {
-        cssprops: function cssprops() {
-            return {
-                'bg-color': 'green'
-            };
-        }
     },
     beforeMount: function beforeMount() {
         this.getSchedule();
@@ -4441,19 +4466,49 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             active: null,
-            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+            expoStands: []
+
         };
     },
+    beforeMount: function beforeMount() {
+        this.getExpoStands();
+    },
+
 
     methods: {
         next: function next() {
             var active = parseInt(this.active);
             this.active = active < 2 ? active + 1 : 0;
+        },
+        getExpoStands: function getExpoStands() {
+            var _this = this;
+
+            axios.get('./getExpoStands').then(function (response) {
+                console.log(response.data);
+                _this.expoStands = response.data;
+
+                // console.log(this.users);
+            });
         }
     }
 });
@@ -4505,7 +4560,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['classs']
+    props: ['classs'],
+
+    methods: {
+        tileColor: function tileColor(j) {
+
+            setTimeout(function () {
+                var els = document.getElementById("tbl").getElementsByTagName("td");
+                els[j].style.background = "rgba(149, 143, 255, 0." + j + "9)";
+
+                console.log(j);
+            }, 1000 * j);
+
+            setTimeout(function () {
+                var els = document.getElementById("tbl").getElementsByTagName("td");
+
+                els[j].style.background = "rgba(149, 143, 255, 0.15)";
+
+                console.log(j);
+            }, 1000 * j);
+        }
+    },
+
+    mounted: function mounted() {
+
+        for (var i = 0; i <= 10; i++) {
+
+            for (var _i = 0; _i < 6; _i++) {
+                this.tileColor(_i);
+            }
+        }
+    }
 });
 
 /***/ }),
@@ -4515,6 +4600,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
 //
 //
 //
@@ -4752,6 +4839,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
 //
 //
 //
@@ -8412,7 +8503,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\nh1{\n     color:red;\n}\n#rr{\n\n    margin-left:10px;\n    width:100%;\n}\n#dd{\n        background-color: #38c172;\n        opacity:0.5;\n}\n#cc{\n        opacity: 1;\n}\n\n", ""]);
+exports.push([module.i, "\n.main-content{\n        position: relative;\n        top:8vh;\n}\n.tabs{\n    height: 70vh;\n\n    overflow-y: scroll;\n}\n\n\n\n\n", ""]);
 
 // exports
 
@@ -8547,7 +8638,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 exports.push([module.i, "@import url(https://cdn.jsdelivr.net/npm/animate.css@3.5.1);", ""]);
 
 // module
-exports.push([module.i, "\n.heading{\n    color:#2F3D98;\n    font-size:100px;\n    font-weight:bold;\n}\n.secondary-heading :not(h1){\n   color:#121B58;\n    font-weight:bold;\n    text-align:left;\n}\n.flip {\n    -webkit-perspective: 800;\n    perspective: 800;\n    position: relative;\n    text-align: center;\n}\n.flip .card.flipped {\n    -webkit-transform: rotatey(-180deg);\n    transform: rotatey(-180deg);\n}\n.flip .card {\n    width: 270px;\n    height: 178px;\n    -webkit-transform-style: preserve-3d;\n    -webkit-transition: 0.5s;\n    transform-style: preserve-3d;\n    transition: 0.5s;\n    background-color: #fff;\n}\n.flip .card .face {\n    -webkit-backface-visibility: hidden ;\n    backface-visibility: hidden ;\n    z-index: 2;\n}\n.flip .card .front {\n    position: absolute;\n    width: 270px;\n    z-index: 1;\n}\n.flip .card .front img{\n    width: 60%;\n    height: 60%;\n}\n.flip .card .img {\n    position: relative;\n    width: 100px;\n    height: 100px;\n    z-index: 1;\n    border: 2px solid #000;\n}\n.flip .card .back {\n\n    -webkit-transform: rotatey(-180deg);\n    transform: rotatey(-180deg);\n}\n.inner{\n    margin:0px !important;\n    width: 270px;\n}\n\n", ""]);
+exports.push([module.i, "\n.main-content{\n    top:8vh;\n    position: relative;\n}\n.heading{\n    color:#2F3D98;\n    font-size:100px;\n    font-weight:bold;\n}\n.secondary-heading :not(h1){\n   color:#121B58;\n    font-weight:bold;\n    text-align:left;\n}\n.flip {\n    -webkit-perspective: 800;\n    perspective: 800;\n    position: relative;\n    text-align: center;\n}\n.flip .card.flipped {\n    -webkit-transform: rotatey(-180deg);\n    transform: rotatey(-180deg);\n}\n.flip .card {\n    width: 270px;\n    height: 178px;\n    -webkit-transform-style: preserve-3d;\n    -webkit-transition: 0.5s;\n    transform-style: preserve-3d;\n    transition: 0.5s;\n    background-color: #fff;\n}\n.flip .card .face {\n    -webkit-backface-visibility: hidden ;\n    backface-visibility: hidden ;\n    z-index: 2;\n}\n.flip .card .front {\n    position: absolute;\n    width: 270px;\n    z-index: 1;\n}\n.flip .card .front img{\n    width: 60%;\n    height: 60%;\n}\n.flip .card .img {\n    position: relative;\n    width: 100px;\n    height: 100px;\n    z-index: 1;\n    border: 2px solid #000;\n}\n.flip .card .back {\n\n    -webkit-transform: rotatey(-180deg);\n    transform: rotatey(-180deg);\n}\n.inner{\n    margin:0px !important;\n    width: 270px;\n}\n\n", ""]);
 
 // exports
 
@@ -8607,7 +8698,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 exports.push([module.i, "@import url(https://cdn.jsdelivr.net/npm/animate.css@3.5.1);", ""]);
 
 // module
-exports.push([module.i, "\n#wrapper{\n    background-image: url(\"http://otew.io/socialwall/img/ew-2018-background.png\");\n    background-size: cover;\n    height:100%;\n    top:0px;\n}\n.logo{\n    top:6vh;\n    left:6vw;\n    position:relative;\n}\n\n\n", ""]);
+exports.push([module.i, "\n.main{\n    background: transparent;\n}\n#wrapper{\n    background-image: url(\"http://otew.io/socialwall/img/ew-2018-background.png\");\n    background-size: cover;\n    height:100%;\n    top:0px;\n}\n.logo{\n    top:6vh;\n    left:6vw;\n    position:relative;\n}\n\n\n", ""]);
 
 // exports
 
@@ -8622,7 +8713,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n.drawer{\n    background-color:var(bg-color);\n    padding-top: -10vh;\n}\n.main-content{\n    top:8vh;\n    position:relative;\n}\n.fixed_header{\n    width: 80vw;\n    table-layout: fixed;\n    border-collapse: collapse;\n}\ntable tbody, .main_text{\n    padding-left: 20px;\n}\n.fixed_header tbody{\n    display:block;\n    width: 100%;\n    overflow: auto;\n    height: 40vh;\n}\n.fixed_header thead tr {\n    display: block;\n}\n.fixed_header thead {\n    background: black;\n    color:#fff;\n}\n.fixed_header th, .fixed_header td {\n    padding: 5px;\n    text-align: left;\n    width: 85vw;\n}\n", ""]);
+exports.push([module.i, "\n.drawer{\n    background-color:var(bg-color);\n    padding-top: -10vh;\n}\n.main-content{\n    top:8vh;\n    position:relative;\n    background: transparent;\n}\n.fixed_header{\n    width: 80vw;\n    table-layout: fixed;\n    border-collapse: collapse;\n}\ntable tbody, .main_text{\n    padding-left: 20px;\n}\n.fixed_header tbody{\n    display:block;\n    width: 100%;\n    overflow: auto;\n    height: 40vh;\n}\n.fixed_header thead tr {\n    display: block;\n}\n.fixed_header thead {\n    background: black;\n    color:#fff;\n}\n.fixed_header th, .fixed_header td {\n    padding: 5px;\n    text-align: left;\n    width: 85vw;\n}\n", ""]);
 
 // exports
 
@@ -8637,7 +8728,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n.img{\n    z-index:1;\n}\n.marker{\n    z-index:100;\n    position:absolute;\n}\n", ""]);
+exports.push([module.i, "\n.img{\n    z-index:1;\n}\n.marker{\n    z-index:100;\n    position:absolute;\n}\n.main-content{\n\n    top:8vh;\n    position: relative;\n}\n", ""]);
 
 // exports
 
@@ -8682,7 +8773,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 exports.push([module.i, "@import url(https://cdn.jsdelivr.net/npm/animate.css@3.5.1);", ""]);
 
 // module
-exports.push([module.i, "\n.nav{\n    top:18vh;\n}\n.drawer{\n    background-color: white;\n}\na{\n    text-decoration: none;\n}\n#sec{\n    //background-color: red;\n    width:100%;\n}\ntable{\n    border-spacing: 10px;\n    border-collapse: separate;\n}\n.tile{\n    width:11.28vw;\n}\n\n\n\n", ""]);
+exports.push([module.i, "\n.nav{\n    top:18vh;\n}\n.drawer{\n    background-color: white;\n}\n.tile-bg1{\n     background-color: rgba(149, 143, 255, 0.15);\n}\n.tile-bg2{\n    background-color: rgba(149, 143, 255, 0.25);\n}\n.tile-bg3{\n    background-color: rgba(149, 143, 255, 0.35);\n}\na{\n    text-decoration: none;\n}\n#sec{\n    //background-color: red;\n    width:100%;\n}\ntable{\n    border-spacing: 10px;\n    border-collapse: separate;\n}\n.tile{\n    width:11.28vw;\n}\n\n\n\n", ""]);
 
 // exports
 
@@ -36823,11 +36914,10 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row", attrs: { id: "rr" } }, [
-    _c("div", { staticClass: "col-md-3", attrs: { id: "dd" } }, [
+  return _c("div", { staticClass: "main-content" }, [
+    _c("div", { staticClass: "col-md-3 tabs", attrs: { id: "dd" } }, [
       _c(
         "div",
-        { attrs: { id: "cc" } },
         [
           _c(
             "v-tabs",
@@ -36843,30 +36933,92 @@ var render = function() {
             },
             [
               _c("v-tab", { attrs: { ripple: "" } }, [
-                _vm._v("\n                OpenText\n\n            ")
+                _vm._v("\n                    OpenText\n                ")
               ]),
               _vm._v(" "),
               _c("v-tab", { attrs: { ripple: "" } }, [
-                _vm._v("\n                Partners\n\n            ")
+                _vm._v("\n                    Partners\n                ")
               ]),
               _vm._v(" "),
-              _vm._l(3, function(n) {
-                return _c(
-                  "v-tab-item",
-                  { key: n },
-                  [
-                    _c(
-                      "v-card",
-                      { attrs: { flat: "" } },
-                      [_c("v-card-text", [_vm._v(_vm._s(_vm.text))])],
-                      1
-                    )
-                  ],
-                  1
-                )
-              })
+              _c(
+                "v-tab-item",
+                [
+                  _c(
+                    "v-card",
+                    { attrs: { flat: "" } },
+                    [
+                      _c("v-card-text", [
+                        _c(
+                          "ol",
+                          _vm._l(_vm.expoStands, function(stand, index) {
+                            return _c(
+                              "li",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: stand.type == "OpenText",
+                                    expression: "stand.type=='OpenText'"
+                                  }
+                                ]
+                              },
+                              [
+                                _c("a", { attrs: { href: "#" } }, [
+                                  _vm._v(_vm._s(stand.exhibitor))
+                                ])
+                              ]
+                            )
+                          })
+                        )
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-tab-item",
+                [
+                  _c(
+                    "v-card",
+                    { attrs: { flat: "" } },
+                    [
+                      _c("v-card-text", [
+                        _c(
+                          "ol",
+                          _vm._l(_vm.expoStands, function(stand, index) {
+                            return _c(
+                              "li",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: stand.type == "Partner",
+                                    expression: "stand.type=='Partner'"
+                                  }
+                                ]
+                              },
+                              [
+                                _c("a", { attrs: { href: "#" } }, [
+                                  _vm._v(_vm._s(stand.exhibitor))
+                                ])
+                              ]
+                            )
+                          })
+                        )
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
             ],
-            2
+            1
           )
         ],
         1
@@ -37490,7 +37642,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "row" },
+    { staticClass: "main-content" },
     [
       _c(
         "v-container",
@@ -37972,6 +38124,7 @@ var render = function() {
       _c(
         "transition",
         {
+          staticClass: "main",
           attrs: {
             name: "router-anim",
             "enter-active-class": "animated fadeInDown",
@@ -38127,50 +38280,144 @@ var render = function() {
                               schedule.type == "schedule"
                                 ? _c(
                                     "v-tab-item",
+                                    { staticClass: "transparent" },
                                     [
-                                      _c("v-card", { attrs: { flat: "" } }, [
-                                        _c("h1", { staticClass: "main_text" }, [
-                                          _vm._v(
-                                            _vm._s(schedule.schedule.title)
-                                          )
-                                        ]),
-                                        _vm._v(" "),
-                                        _c("h3", { staticClass: "main_text" }, [
-                                          _vm._v(_vm._s(schedule.date))
-                                        ]),
-                                        _vm._v(" "),
-                                        _c(
-                                          "table",
-                                          {
-                                            staticClass:
-                                              "fixed_header table table-striped"
-                                          },
-                                          [
-                                            _c(
-                                              "tbody",
-                                              { staticClass: "table_body" },
-                                              _vm._l(
-                                                schedule.schedule.events,
-                                                function(event, index) {
-                                                  return _c("tr", [
-                                                    _c("td", [
-                                                      _vm._v(
-                                                        _vm._s(event.title)
-                                                      )
-                                                    ]),
-                                                    _vm._v(" "),
-                                                    _c("td", [
-                                                      _vm._v(
-                                                        _vm._s(event.location)
-                                                      )
-                                                    ])
-                                                  ])
-                                                }
+                                      _c(
+                                        "v-card",
+                                        {
+                                          staticClass: "yoyo",
+                                          attrs: { flat: "" }
+                                        },
+                                        [
+                                          _c(
+                                            "h1",
+                                            { staticClass: "main_text" },
+                                            [
+                                              _vm._v(
+                                                _vm._s(schedule.schedule.title)
                                               )
-                                            )
-                                          ]
-                                        )
-                                      ])
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "h3",
+                                            { staticClass: "main_text" },
+                                            [_vm._v(_vm._s(schedule.date))]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "table",
+                                            {
+                                              staticClass:
+                                                "fixed_header table table-striped"
+                                            },
+                                            [
+                                              _c(
+                                                "tbody",
+                                                { staticClass: "table_body" },
+                                                [
+                                                  _vm._l(
+                                                    schedule.schedule.events,
+                                                    function(event, index) {
+                                                      return _c("tr", [
+                                                        _c("td", [
+                                                          _vm._v(
+                                                            _vm._s(event.title)
+                                                          )
+                                                        ]),
+                                                        _vm._v(" "),
+                                                        _c("td", [
+                                                          _vm._v(
+                                                            _vm._s(
+                                                              event.location
+                                                            )
+                                                          )
+                                                        ])
+                                                      ])
+                                                    }
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c("h2", [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        schedule.breakout.title
+                                                      )
+                                                    )
+                                                  ]),
+                                                  _vm._v(" "),
+                                                  _vm._l(
+                                                    schedule.breakout
+                                                      .session_blocks,
+                                                    function(breakout, index) {
+                                                      return _c(
+                                                        "tr",
+                                                        {
+                                                          directives: [
+                                                            {
+                                                              name: "show",
+                                                              rawName: "v-show",
+                                                              value:
+                                                                schedule
+                                                                  .breakout
+                                                                  .session_blocks,
+                                                              expression:
+                                                                "schedule.breakout.session_blocks"
+                                                            }
+                                                          ]
+                                                        },
+                                                        [
+                                                          _c("h2", [
+                                                            _vm._v(
+                                                              _vm._s(
+                                                                breakout.time_range
+                                                              )
+                                                            )
+                                                          ]),
+                                                          _vm._v(" "),
+                                                          _c("br"),
+                                                          _vm._v(" "),
+                                                          _vm._l(
+                                                            breakout.events,
+                                                            function(
+                                                              events,
+                                                              index
+                                                            ) {
+                                                              return _c(
+                                                                "v-card",
+                                                                [
+                                                                  _c("td", [
+                                                                    _vm._v(
+                                                                      _vm._s(
+                                                                        events.title
+                                                                      )
+                                                                    )
+                                                                  ]),
+                                                                  _vm._v(" "),
+                                                                  _c("td", [
+                                                                    _vm._v(
+                                                                      _vm._s(
+                                                                        events.location
+                                                                      )
+                                                                    )
+                                                                  ])
+                                                                ]
+                                                              )
+                                                            }
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c("v-card")
+                                                        ],
+                                                        2
+                                                      )
+                                                    }
+                                                  )
+                                                ],
+                                                2
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      )
                                     ],
                                     1
                                   )
@@ -38291,333 +38538,340 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-container",
-    { attrs: { "grid-list-md": "" } },
+    "div",
+    { staticClass: "main-content" },
     [
       _c(
-        "v-layout",
-        { attrs: { row: "", wrap: "" } },
+        "v-container",
+        { attrs: { "grid-list-md": "" } },
         [
           _c(
-            "v-flex",
-            { attrs: { xs10: "", "offset-xs1": "" } },
+            "v-layout",
+            { attrs: { row: "", wrap: "" } },
             [
               _c(
-                "v-card",
+                "v-flex",
                 [
                   _c(
-                    "v-tabs",
-                    {
-                      attrs: { "slider-color": "black" },
-                      model: {
-                        value: _vm.active,
-                        callback: function($$v) {
-                          _vm.active = $$v
-                        },
-                        expression: "active"
-                      }
-                    },
+                    "v-card",
                     [
-                      _c("v-tab", { attrs: { ripple: "" } }, [
-                        _vm._v(
-                          "\n                       Level 100\n\n                    "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("v-tab", { attrs: { ripple: "" } }, [
-                        _vm._v(
-                          "\n                        Level 200\n                    "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("v-tab", { attrs: { ripple: "" } }, [
-                        _vm._v(
-                          "\n                        Level 300\n\n                    "
-                        )
-                      ]),
-                      _vm._v(" "),
                       _c(
-                        "v-tab",
+                        "v-tabs",
                         {
-                          attrs: { ripple: "" },
+                          attrs: { "slider-color": "black" },
                           model: {
-                            value: _vm.active_tab,
+                            value: _vm.active,
                             callback: function($$v) {
-                              _vm.active_tab = $$v
+                              _vm.active = $$v
                             },
-                            expression: "active_tab"
+                            expression: "active"
                           }
                         },
                         [
-                          _vm._v(
-                            "\n                        Level 400\n                    "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("v-tab", { attrs: { ripple: "" } }, [
-                        _vm._v(
-                          "\n                        Level 500\n                    "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("v-tab", { attrs: { ripple: "" } }, [
-                        _vm._v(
-                          "\n                        Level 600\n                    "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("v-tab", { attrs: { ripple: "" } }, [
-                        _vm._v(
-                          "\n                        Level 700\n                    "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("v-tab", { attrs: { ripple: "" } }, [
-                        _vm._v(
-                          "\n                        Level 800\n                    "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("v-tab", { attrs: { ripple: "" } }, [
-                        _vm._v(
-                          "\n                        InterContinental\n                    "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "v-tab-item",
-                        {
-                          on: {
-                            click: function($event) {
-                              _vm.cords()
-                            }
-                          }
-                        },
-                        [
-                          _c("v-card", { attrs: { flat: "" } }, [
-                            _c("img", {
-                              staticClass: "img",
-                              attrs: {
-                                src: "images/touchscreen/level100.png",
-                                height: "600",
-                                width: "100%"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("img", {
-                              staticClass: "marker",
-                              attrs: {
-                                alt: "snowballAppear",
-                                id: "snowballAppear",
-                                src:
-                                  "https://cdn1.iconfinder.com/data/icons/social-messaging-ui-color/254000/67-512.png",
-                                height: "100",
-                                width: "100"
-                              }
-                            })
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-tab-item",
-                        {
-                          on: {
-                            click: function($event) {
-                              _vm.cords()
-                            }
-                          }
-                        },
-                        [
-                          _c("v-card", { attrs: { flat: "" } }, [
-                            _c("img", {
-                              attrs: {
-                                src: "images/touchscreen/level200.png",
-                                height: "400",
-                                width: "100%"
-                              }
-                            })
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-tab-item",
-                        [
-                          _c("v-card", { attrs: { flat: "" } }, [
-                            _c("img", {
-                              attrs: {
-                                src: "images/touchscreen/level300.png",
-                                height: "400",
-                                width: "100%"
-                              }
-                            })
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-tab-item",
-                        [
-                          _c("v-card", { attrs: { flat: "" } }, [
-                            _c("img", {
-                              attrs: {
-                                src: "images/touchscreen/level400.png",
-                                height: "400",
-                                width: "100%"
-                              }
-                            })
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-tab-item",
-                        [
-                          _c("v-card", { attrs: { flat: "" } }, [
-                            _c("img", {
-                              attrs: {
-                                src: "images/touchscreen/level500.png",
-                                height: "400",
-                                width: "100%"
-                              }
-                            })
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-tab-item",
-                        [
-                          _c("v-card", { attrs: { flat: "" } }, [
-                            _c("img", {
-                              attrs: {
-                                src: "images/touchscreen/level600.png",
-                                height: "400",
-                                width: "100%"
-                              }
-                            })
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-tab-item",
-                        [
-                          _c("v-card", { attrs: { flat: "" } }, [
-                            _c("img", {
-                              attrs: {
-                                src: "images/touchscreen/level700.png",
-                                height: "400",
-                                width: "100%"
-                              }
-                            })
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-tab-item",
-                        [
-                          _c("v-card", { attrs: { flat: "" } }, [
-                            _c("img", {
-                              attrs: {
-                                src: "images/touchscreen/level800.png",
-                                height: "400",
-                                width: "100%"
-                              }
-                            })
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-tab-item",
-                        [
-                          _c("v-card", { attrs: { flat: "" } }, [
-                            _c("img", {
-                              attrs: {
-                                src: "images/touchscreen/intercontential.png",
-                                height: "400",
-                                width: "100%"
-                              }
-                            })
-                          ])
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    { attrs: { href: "touchscreen#/" } },
-                    [
-                      _c(
-                        "v-btn",
-                        {
-                          attrs: {
-                            color: "primary",
-                            dark: "",
-                            absolute: "",
-                            bottom: "",
-                            left: "",
-                            fab: ""
-                          }
-                        },
-                        [_c("v-icon", [_vm._v("home")])],
-                        1
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-bottom-sheet",
-                    {
-                      model: {
-                        value: _vm.sheet,
-                        callback: function($$v) {
-                          _vm.sheet = $$v
-                        },
-                        expression: "sheet"
-                      }
-                    },
-                    [
-                      _c(
-                        "v-btn",
-                        {
-                          attrs: {
-                            slot: "activator",
-                            color: "purple",
-                            dark: "",
-                            absolute: "",
-                            bottom: "",
-                            right: "",
-                            fab: ""
-                          },
-                          slot: "activator"
-                        },
-                        [_c("v-icon", [_vm._v("list")])],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-list",
-                        [
-                          _c("v-subheader", [_vm._v("Open in")]),
+                          _c("v-tab", { attrs: { ripple: "" } }, [
+                            _vm._v(
+                              "\n                       Level 100\n\n                    "
+                            )
+                          ]),
                           _vm._v(" "),
-                          _c("home")
+                          _c("v-tab", { attrs: { ripple: "" } }, [
+                            _vm._v(
+                              "\n                        Level 200\n                    "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("v-tab", { attrs: { ripple: "" } }, [
+                            _vm._v(
+                              "\n                        Level 300\n\n                    "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "v-tab",
+                            {
+                              attrs: { ripple: "" },
+                              model: {
+                                value: _vm.active_tab,
+                                callback: function($$v) {
+                                  _vm.active_tab = $$v
+                                },
+                                expression: "active_tab"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                        Level 400\n                    "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("v-tab", { attrs: { ripple: "" } }, [
+                            _vm._v(
+                              "\n                        Level 500\n                    "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("v-tab", { attrs: { ripple: "" } }, [
+                            _vm._v(
+                              "\n                        Level 600\n                    "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("v-tab", { attrs: { ripple: "" } }, [
+                            _vm._v(
+                              "\n                        Level 700\n                    "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("v-tab", { attrs: { ripple: "" } }, [
+                            _vm._v(
+                              "\n                        Level 800\n                    "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("v-tab", { attrs: { ripple: "" } }, [
+                            _vm._v(
+                              "\n                        InterContinental\n                    "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "v-tab-item",
+                            {
+                              on: {
+                                click: function($event) {
+                                  _vm.cords()
+                                }
+                              }
+                            },
+                            [
+                              _c("v-card", { attrs: { flat: "" } }, [
+                                _c("img", {
+                                  staticClass: "img",
+                                  attrs: {
+                                    src: "images/touchscreen/level100.png",
+                                    height: "300",
+                                    width: "100%"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("img", {
+                                  staticClass: "marker",
+                                  attrs: {
+                                    alt: "snowballAppear",
+                                    id: "snowballAppear",
+                                    src:
+                                      "https://cdn1.iconfinder.com/data/icons/social-messaging-ui-color/254000/67-512.png",
+                                    height: "100",
+                                    width: "100"
+                                  }
+                                })
+                              ])
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-tab-item",
+                            {
+                              on: {
+                                click: function($event) {
+                                  _vm.cords()
+                                }
+                              }
+                            },
+                            [
+                              _c("v-card", { attrs: { flat: "" } }, [
+                                _c("img", {
+                                  attrs: {
+                                    src: "images/touchscreen/level200.png",
+                                    height: "300",
+                                    width: "100%"
+                                  }
+                                })
+                              ])
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-tab-item",
+                            [
+                              _c("v-card", { attrs: { flat: "" } }, [
+                                _c("img", {
+                                  attrs: {
+                                    src: "images/touchscreen/level300.png",
+                                    height: "300",
+                                    width: "100%"
+                                  }
+                                })
+                              ])
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-tab-item",
+                            [
+                              _c("v-card", { attrs: { flat: "" } }, [
+                                _c("img", {
+                                  attrs: {
+                                    src: "images/touchscreen/level400.png",
+                                    height: "300",
+                                    width: "100%"
+                                  }
+                                })
+                              ])
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-tab-item",
+                            [
+                              _c("v-card", { attrs: { flat: "" } }, [
+                                _c("img", {
+                                  attrs: {
+                                    src: "images/touchscreen/level500.png",
+                                    height: "300",
+                                    width: "100%"
+                                  }
+                                })
+                              ])
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-tab-item",
+                            [
+                              _c("v-card", { attrs: { flat: "" } }, [
+                                _c("img", {
+                                  attrs: {
+                                    src: "images/touchscreen/level600.png",
+                                    height: "300",
+                                    width: "100%"
+                                  }
+                                })
+                              ])
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-tab-item",
+                            [
+                              _c("v-card", { attrs: { flat: "" } }, [
+                                _c("img", {
+                                  attrs: {
+                                    src: "images/touchscreen/level700.png",
+                                    height: "10vw",
+                                    width: "100%"
+                                  }
+                                })
+                              ])
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-tab-item",
+                            [
+                              _c("v-card", { attrs: { flat: "" } }, [
+                                _c("img", {
+                                  attrs: {
+                                    src: "images/touchscreen/level800.png",
+                                    height: "300",
+                                    width: "100%"
+                                  }
+                                })
+                              ])
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-tab-item",
+                            [
+                              _c("v-card", { attrs: { flat: "" } }, [
+                                _c("img", {
+                                  attrs: {
+                                    src:
+                                      "images/touchscreen/intercontential.png",
+                                    height: "300",
+                                    width: "100%"
+                                  }
+                                })
+                              ])
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        { attrs: { href: "touchscreen#/" } },
+                        [
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: {
+                                color: "primary",
+                                dark: "",
+                                absolute: "",
+                                bottom: "",
+                                left: "",
+                                fab: ""
+                              }
+                            },
+                            [_c("v-icon", [_vm._v("home")])],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-bottom-sheet",
+                        {
+                          model: {
+                            value: _vm.sheet,
+                            callback: function($$v) {
+                              _vm.sheet = $$v
+                            },
+                            expression: "sheet"
+                          }
+                        },
+                        [
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: {
+                                slot: "activator",
+                                color: "purple",
+                                dark: "",
+                                absolute: "",
+                                bottom: "",
+                                right: "",
+                                fab: ""
+                              },
+                              slot: "activator"
+                            },
+                            [_c("v-icon", [_vm._v("list")])],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-list",
+                            [
+                              _c("v-subheader", [_vm._v("Open in")]),
+                              _vm._v(" "),
+                              _c("home")
+                            ],
+                            1
+                          )
                         ],
                         1
                       )
@@ -38997,7 +39251,7 @@ var render = function() {
             { attrs: { "grid-list-md": "", "text-xs-center": "" } },
             [
               _c("div", { staticClass: "row" }, [
-                _c("table", [
+                _c("table", { attrs: { id: "tbl" } }, [
                   _c("tr", [
                     _c("td", { staticClass: "tile" }, [
                       _c(

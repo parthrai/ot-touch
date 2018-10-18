@@ -1,33 +1,50 @@
 <template>
-   <div class="row" id="rr">
-       <div class="col-md-3" id="dd">
+   <div class="main-content">
+       <div class="col-md-3 tabs" id="dd">
 
-         <div id="cc">
+         <div>
            <v-tabs
                    v-model="active"
+                   slider-color="black">
 
-                   slider-color="black"
-           >
-               <v-tab ripple>
-                   OpenText
+                   <v-tab ripple>
+                       OpenText
+                   </v-tab>
 
-               </v-tab>
-               <v-tab ripple>
-                   Partners
+                   <v-tab ripple>
+                       Partners
+                   </v-tab>
 
-               </v-tab>
 
-               <v-tab-item
-                       v-for="n in 3"
-                       :key="n"
-               >
-                   <v-card flat>
-                       <v-card-text>{{ text }}</v-card-text>
-                   </v-card>
-               </v-tab-item>
+
+                   <v-tab-item>
+                       <v-card flat>
+                           <v-card-text>
+                               <ol>
+                                   <li  v-for="(stand,index) in expoStands" v-show="stand.type=='OpenText'">
+                                       <a href="#">{{stand.exhibitor}}</a>
+                                   </li>
+                               </ol>
+
+                           </v-card-text>
+                       </v-card>
+                   </v-tab-item>
+
+                   <v-tab-item>
+                       <v-card flat>
+                           <v-card-text>
+                               <ol>
+                                   <li  v-for="(stand,index) in expoStands" v-show="stand.type=='Partner'">
+                                       <a href="#">{{stand.exhibitor}}</a>
+                                   </li>
+                               </ol>
+
+                           </v-card-text>
+                       </v-card>
+                   </v-tab-item>
 
            </v-tabs>
-           </div>
+         </div>
 
        </div>
        <div class="col-md-9" id="ss">
@@ -78,24 +95,21 @@
 </template>
 
 <style>
- h1{
-     color:red;
- }
-#rr{
+    .main-content{
+        position: relative;
+        top:8vh;
 
-    margin-left:10px;
-    width:100%;
+    }
 
+
+.tabs{
+    height: 70vh;
+
+    overflow-y: scroll;
 }
-    #dd{
-        background-color: #38c172;
-        opacity:0.5;
 
-    }
 
-    #cc{
-        opacity: 1;
-    }
+
 
 </style>
 
@@ -104,14 +118,35 @@
         data() {
             return {
                 active: null,
-                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                expoStands:[]
+
             }
         },
+
+
+        beforeMount(){
+            this.getExpoStands();
+        },
+
         methods: {
             next() {
                 const active = parseInt(this.active)
                 this.active = (active < 2 ? active + 1 : 0)
+            },
+
+            getExpoStands(){
+                axios.get('./getExpoStands')
+                    .then(response => {
+                        console.log(response.data);
+                        this.expoStands= response.data
+
+                        // console.log(this.users);
+                    });
             }
+
+
+
         }
     }
 </script>

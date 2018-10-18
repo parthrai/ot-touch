@@ -304,6 +304,7 @@ Route::group(
 
 Route::get('/touchscreen','TouchScreenController@index');
 Route::get('/getSchedule','TouchScreenController@schedule');
+Route::get('/getExpoStands','TouchScreenController@ExpoStands');
 
 
 // End Touch Screen Routes

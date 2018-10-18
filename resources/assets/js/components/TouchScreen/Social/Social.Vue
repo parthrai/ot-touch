@@ -1,5 +1,5 @@
 <template>
-    <div class="row">
+    <div class="main-content">
     <v-container grid-list-md text-xs-center color="#F2F9FF">
         <v-card>
             <v-layout row wrap>
@@ -139,6 +139,10 @@
     @import "https://cdn.jsdelivr.net/npm/animate.css@3.5.1";
 
 
+    .main-content{
+        top:8vh;
+        position: relative; 
+    }
 
     .heading{
         color:#2F3D98;

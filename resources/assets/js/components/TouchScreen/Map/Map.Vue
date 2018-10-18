@@ -1,9 +1,10 @@
 <template>
+    <div class="main-content">
     <v-container grid-list-md>
         <v-layout row wrap>
 
-            <v-flex xs10 offset-xs1>
-                <v-card>
+            <v-flex>
+                <v-card >
                     <v-tabs
                             v-model="active"
                             slider-color="black" >
@@ -48,7 +49,7 @@
                         <v-tab-item @click="cords()">
                             <v-card flat>
 
-                                <img src="images/touchscreen/level100.png" height="600" width="100%" class="img">
+                                <img src="images/touchscreen/level100.png" height="300" width="100%" class="img">
                                 <img alt="snowballAppear" id="snowballAppear"  src="https://cdn1.iconfinder.com/data/icons/social-messaging-ui-color/254000/67-512.png"  class="marker" height="100" width="100"/>
 
                             </v-card>
@@ -56,49 +57,49 @@
 
                         <v-tab-item @click="cords()">
                             <v-card flat>
-                                <img src="images/touchscreen/level200.png" height="400" width="100%">
+                                <img src="images/touchscreen/level200.png" height="300" width="100%">
                             </v-card>
                         </v-tab-item>
 
                         <v-tab-item>
                             <v-card flat>
-                                <img src="images/touchscreen/level300.png" height="400" width="100%">
+                                <img src="images/touchscreen/level300.png" height="300" width="100%">
                             </v-card>
                         </v-tab-item>
 
                         <v-tab-item>
                             <v-card flat>
-                                <img src="images/touchscreen/level400.png" height="400" width="100%">
+                                <img src="images/touchscreen/level400.png" height="300" width="100%">
                             </v-card>
                         </v-tab-item>
 
                         <v-tab-item>
                             <v-card flat>
-                                <img src="images/touchscreen/level500.png" height="400" width="100%">
+                                <img src="images/touchscreen/level500.png" height="300" width="100%">
                             </v-card>
                         </v-tab-item>
 
                         <v-tab-item>
                             <v-card flat>
-                                <img src="images/touchscreen/level600.png" height="400" width="100%">
+                                <img src="images/touchscreen/level600.png" height="300" width="100%">
                             </v-card>
                         </v-tab-item>
 
                         <v-tab-item>
                             <v-card flat>
-                                <img src="images/touchscreen/level700.png" height="400" width="100%">
+                                <img src="images/touchscreen/level700.png" height="10vw" width="100%">
                             </v-card>
                         </v-tab-item>
 
                         <v-tab-item>
                             <v-card flat>
-                                <img src="images/touchscreen/level800.png" height="400" width="100%">
+                                <img src="images/touchscreen/level800.png" height="300" width="100%">
                             </v-card>
                         </v-tab-item>
 
                         <v-tab-item>
                             <v-card flat>
-                                <img src="images/touchscreen/intercontential.png" height="400" width="100%">
+                                <img src="images/touchscreen/intercontential.png" height="300" width="100%">
                             </v-card>
                         </v-tab-item>
                     </v-tabs>
@@ -150,6 +151,7 @@
 
         </v-layout>
     </v-container>
+    </div>
 
 </template>
 
@@ -223,5 +225,11 @@
         z-index:100;
         position:absolute;
 
+    }
+
+    .main-content{
+
+        top:8vh;
+        position: relative;
     }
 </style>
